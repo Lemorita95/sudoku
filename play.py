@@ -35,20 +35,20 @@ class SudokuCreator():
         backtrack at self.solve() changes self.assigned
         so call this function after and before solf.solve() returns initial and final state
         """
-        for j in reversed(range(self.sudoku.height)):
-            for i in range(self.sudoku.width):
+        for i in reversed(range(self.sudoku.height)):
+            for j in range(self.sudoku.width):
                 try:
                     print(self.assigned[Node(i, j)], end='')
                 except KeyError:
                     print(" ", end='')
 
                 # right block separator
-                if i in [2, 5]:
+                if j in [2, 5]:
                     print(" | ", end='')
             print()
 
             # bottom block separator
-            if j in [6, 3]:
+            if i in [6, 3]:
                 print("--- + --- + ---")
 
     def solve(self):
